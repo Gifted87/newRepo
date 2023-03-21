@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Airtime Topup, Store and Blog">
+        <meta name="keywords" content="Airtime, Data, MTN, Glo, Airtel, 9Mobile,
+            Top-Up">
+        <meta name="author" content="Gifted Braimah">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            The Maruf Way - Home Page
+        </title>
+        <link href='https://fonts.googleapis.com/css?family=Archivo Black' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>        
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://kit.fontawesome.com/yourcode.js"
+            crossorigin="anonymous"></script>
+    </head>
+<body>
+<div id="main">
+    <div id="head">
+        <div id="yy">
+            <h1 id="hh">
+                The Maruf Way
+            </h1>
+        </div>
+        <img src="we.png" id="we" width="18vw" onclick="mENU()">
+        <div id="right"><hr>
+            <a href="#" class="right" id="n" style="border: none; margin-bottom: 2vw">
+                Contact Us
+            </a> <hr>
+            <a href="#" class="right"  id="n" style="margin-bottom: 2vw">
+                Store
+            </a><hr>
+            <a href="#" class="right"  id="n" style="margin-bottom: 2vw">
+                Blog
+            </a>
+        </div>
+    </div>
+    <div id="header">
+        <img src="e.png" width="50%" id="hea">
+        <div id="sign">
+            <a href="#" id="sig" onclick="Function()">
+                SIGN UP OR LOG IN
+            </a>
+            <a href="#">
+                <img src="yyyy.png" id="ar" width="20vw">
+            </a>
+        </div>
+    </div><div id="oo">
+    <div id="box">
+        <h2 id="one">
+            Virtual Topup
+        </h2><div id = "ee">
+        <h3 id="two" onclick="button1(x)">
+            Airtime
+        </h3>
+        <h3 id="three" onclick="button2(x)">
+            Data
+        </h3></div>
+        <form id="myform">
+            <input type="tel" name="phoneNumber" placeholder="080x xxx xxxx" id="bb" minlength="11" maxlength="11" required><br>
+            <select name="network" id="cc" onChange="update()">
+                <option value="mtn">MTN</option>
+                <option value="airtel">AIRTEL</option>
+                <option value="glo">GLO</option>
+                <option value="9mobile">9Mobile</option>
+                <option value="" disabled selected hidden>Select Network</option>
+              </select><br>
+              <button type="button" id="sub" onclick="myFunction()">Next</button>
+        </form>
+    </div>
+</div>
+</div>
+<div id="foot">
+    <p id="foo">Copyright &copy 2022, The Maruf Way. All Rights reserved.</p>
+</div>
+<script>
+    var option;
+    var choi;
+    var x = window.matchMedia("(max-width: 500px)")
+      x.addListener(myFunction) // Attach listener function on state changes
+
+    var menu = document.getElementById("right");
+    var img = document.getElementById("we");
+    if(x.matches){
+        menu.style.display = "none";}
+    else{
+        menu.style.display = "inline";
+    }
+    
+    myForm = document.getElementById("form");
+    myForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
+
+    function button1(x) {
+        if (x.matches) { // If media query matches
+            document.getElementById("two").style.borderBottom  = "1.5vw solid #e6e6e6";
+            document.getElementById("three").style.borderBottom  = "";    
+            choi="1";
+        } else {
+            document.getElementById("two").style.borderBottom  = "0.3vw solid blue";
+            document.getElementById("three").style.borderBottom  = "";    
+            choi="1";
+        }
+      }
+      function mENU(){
+        menu.style.display = "block";
+        img.src='c.png';
+        we.onclick = function(){menu.style.display = "none"
+        img.src='we.png';
+        window.location.reload();
+            }
+      }
+      window.innerHeight = "2400px";
+
+
+      function button2(x) {
+        if (x.matches) { // If media query matches
+            document.getElementById("three").style.borderBottom  = "1.5vw solid #e6e6e6";
+            document.getElementById("two").style.borderBottom  = "";    
+            choi="2";
+        } else {
+            document.getElementById("three").style.borderBottom  = "0.3vw solid blue";
+            document.getElementById("two").style.borderBottom  = "";    
+            choi="2";
+        }
+      }
+      
+      
+      
+/*
+    function button1(){
+        document.getElementById("two").style.borderBottom  = "0.3vw solid blue";
+        document.getElementById("three").style.borderBottom  = "";    
+        choi="1";
+    }
+    function button2(){
+        document.getElementById("three").style.borderBottom  = "0.3vw solid blue";
+        document.getElementById("two").style.borderBottom  = "";    
+        choi="2";
+    }*/
+    function update() {
+        
+    }
+    function myFunction(){
+        var select = document.getElementById('cc');
+        var option = select.options[select.selectedIndex];
+        var txt = document.getElementById("bb").value;
+        var myObj, myJSON, text, obj, net, pro, ySON, yObj;
+        net = option.text;
+        if(choi == 1){pro = "Airtime"}else{pro = "Data"};        
+        
+
+        // Retrieving data:
+       // text = localStorage.getItem("testJSON");
+        //obj = JSON.parse(text);
+        //document.getElementById("one").innerHTML = obj.name; 
+    
+        if (txt != "" && (option.value == "mtn" || option.value == "9mobile" || option.value == "airtel" || option.value == "glo")){
+        // Storing data:
+            myObj = { product: pro, phone: txt, network: net, amount: "10000"};
+            myJSON = JSON.stringify(myObj);
+            localStorage.setItem("testJSON", myJSON);
+
+            yObj = {name: {na: "yes"}};
+            yJSON = JSON.stringify(yObj);
+            localStorage.setItem("testJSO", yJSON);
+
+
+        if(choi == "1"){
+            window.location.assign('sec.html');    
+        }
+        else if(choi == "2"){
+            window.location.assign('dat.html');
+        }else{
+            alert("Please specify what you want to purchase!");
+        }
+    }else{alert("Please Enter the Required Details!");}
+    }
+</script>
+</body>
+</html>
